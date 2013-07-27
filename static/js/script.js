@@ -1,13 +1,25 @@
+var map, pointarray, heatmap;
+var data = good_data;
+var taxiData = [];
+var mapOptions = {
+          center: new google.maps.LatLng(40, 0),
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          panControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          zoomControl: false
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
 go.onclick = function () {
     var text = $(document.getElementById("search")).val();
     if(text !== "royal baby")
         alert("Please type in 'royal baby'");
     else
-        heatMap();
+        heatMap(mapOptions, map);
 }
-var map, pointarray, heatmap;
-var data = good_data;
-var taxiData = [];
 
 for(var i = 0; i < data.length; i++) {
     taxiData.push(new google.maps.LatLng(data[i][0], data[i][1]));
@@ -16,17 +28,17 @@ for(var i = 0; i < data.length; i++) {
 console.log(taxiData);
 
 function heatMap() {
-    var mapOptions = {
-          center: new google.maps.LatLng(40, 0),
-          zoom: 3,
-          mapTypeId: google.maps.MapTypeId.TERRAIN,
-          panControl: false,
-          streetViewControl: false,
-          mapTypeControl: false,
-          zoomControl: false
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+    // var mapOptions = {
+    //       center: new google.maps.LatLng(40, 0),
+    //       zoom: 3,
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //       panControl: false,
+    //       streetViewControl: false,
+    //       mapTypeControl: false,
+    //       zoomControl: false
+    //     };
+    //     map = new google.maps.Map(document.getElementById("map-canvas"),
+    //         mapOptions);
 
         // var marker = new google.maps.Marker({
         //   position: new google.maps.LatLng(0,0),
@@ -45,17 +57,6 @@ function heatMap() {
 }
 
 function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(40, 0),
-          zoom: 3,
-          mapTypeId: google.maps.MapTypeId.TERRAIN,
-          panControl: false,
-          streetViewControl: false,
-          mapTypeControl: false,
-          zoomControl: false
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
 
         // var marker = new google.maps.Marker({
         //   position: new google.maps.LatLng(0,0),
