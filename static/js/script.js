@@ -15,10 +15,10 @@ var mapOptions = {
 
 go.onclick = function () {
     var text = $(document.getElementById("search")).val();
-    if(text !== "royal baby")
-        alert("Please type in 'royal baby'");
+    if(text !== "galicia")
+        alert("Please type in 'galicia'");
     else
-        heatMap(mapOptions, map);
+        heatMap();
 }
 
 for(var i = 0; i < data.length; i++) {
