@@ -25,12 +25,13 @@ for(var i = 0; i < data.length; i++) {
     taxiData.push(new google.maps.LatLng(data[i][0], data[i][1]));
 }
 
+console.log("cumulative buckets, ", cumulativeBucket(data));
 console.log(taxiData);
 
 function heatMap() {
     var mapOptions = {
           center: new google.maps.LatLng(40, 0),
-          zoom: 3,
+          zoom: 4,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           panControl: false,
           streetViewControl: false,
@@ -54,6 +55,39 @@ function heatMap() {
         });
 
         heatmap.setMap(map);
+}
+
+function cumulativeBucket(data) {
+  var mintime = data[0][2];
+  var maxtime = data[0][2];
+  for (var i = 0; i < data.length; i++) {
+    if (data[i][2] > maxtime) {
+      maxtime = data[i][2];
+    }
+    else if (data[i][2] < mintime) {
+      mintime = data[i][2]
+    }
+  }
+  // divide into 10 buckets
+  var interval = (maxtime - mintime) / 10.0;
+  var buckets = [];
+  // initialize buckets
+  for (var i = 0; i < 10 ; i++) {
+    buckets[i] = new Array();
+  } 
+
+  for (var i = 0; i < data.length; i++) {
+    bucket = Math.round((data[i][2] - mintime) / interval) - 1;
+    bucket = bucket < 0 ? 0 : bucket;
+    
+    buckets[bucket].push(data[i]);
+    // push data to all upper buckets
+    for (var j = bucket + 1; j < 10; j++) {
+      buckets[j].push(data[i]);
+    }
+  }
+  return buckets;
+
 }
 
 function initialize() {
@@ -151,11 +185,11 @@ function initialize() {
         // Activate slider
         $("#my-input").bind("slider:changed", function (event, data) {
             // The currently selected value of the slider
-            console.log(data.value);
+            // console.log(data.value);
             stupid = true;
 
             // The value as a ratio of the slider (between 0 and 1)
-            console.log(data.ratio);
+            console.log(parseInt(data.ratio* 10));
         });
       }
 
