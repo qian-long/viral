@@ -1,22 +1,77 @@
-function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.TERRAIN,
+var map, pointarray, heatmap;
+var data = good_data;
+var taxiData = [];
+var mapOptions = {
+          center: new google.maps.LatLng(0, 0),
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
           panControl: false,
           streetViewControl: false,
           mapTypeControl: false,
           zoomControl: false
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
+        map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
 
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(0,0),
-          map: map,
-          title: 'Hello World!',
-          icon: '../static/img/dots/reddot.png'
+go.onclick = function () {
+    var text = $(document.getElementById("search")).val();
+    if(text !== "royal baby")
+        alert("Please type in 'royal baby'");
+    else
+        heatMap(mapOptions, map);
+}
+
+for(var i = 0; i < data.length; i++) {
+    taxiData.push(new google.maps.LatLng(data[i][0], data[i][1]));
+}
+
+console.log(taxiData);
+
+function heatMap() {
+    // var mapOptions = {
+    //       center: new google.maps.LatLng(40, 0),
+    //       zoom: 3,
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //       panControl: false,
+    //       streetViewControl: false,
+    //       mapTypeControl: false,
+    //       zoomControl: false
+    //     };
+    //     map = new google.maps.Map(document.getElementById("map-canvas"),
+    //         mapOptions);
+
+        // var marker = new google.maps.Marker({
+        //   position: new google.maps.LatLng(0,0),
+        //   map: map,
+        //   title: 'Hello World!',
+        //   icon: '../static/img/dots/reddot.png'
+        // });
+
+        pointArray = new google.maps.MVCArray(taxiData);
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: pointArray
         });
+
+        heatmap.setMap(map);
+}
+
+function initialize() {
+
+        // var marker = new google.maps.Marker({
+        //   position: new google.maps.LatLng(0,0),
+        //   map: map,
+        //   title: 'Hello World!',
+        //   icon: '../static/img/dots/reddot.png'
+        // });
+
+        // pointArray = new google.maps.MVCArray(taxiData);
+
+        // heatmap = new google.maps.visualization.HeatmapLayer({
+        //     data: pointArray
+        // });
+
+        // heatmap.setMap(map);
 
         var boxText = document.createElement("div");
         boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;";
@@ -41,9 +96,9 @@ function initialize() {
             ,enableEventPropagation: false
         };
 
-        google.maps.event.addListener(marker, "click", function (e) {
-            ib.open(theMap, this);
-        });
+        // google.maps.event.addListener(marker, "click", function (e) {
+        //     ib.open(theMap, this);
+        // });
 
         var ib = new InfoBox(myOptions);
 
@@ -102,8 +157,42 @@ function initialize() {
             // The value as a ratio of the slider (between 0 and 1)
             console.log(data.ratio);
         });
-
       }
+
+      function toggleHeatmap() {
+  heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+
+function changeGradient() {
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ]
+  heatmap.setOptions({
+    gradient: heatmap.get('gradient') ? null : gradient
+  });
+}
+
+function changeRadius() {
+  heatmap.setOptions({radius: heatmap.get('radius') ? null : 20});
+}
+
+function changeOpacity() {
+  heatmap.setOptions({opacity: heatmap.get('opacity') ? null : 0.2});
+}
 
 
     google.maps.event.addDomListener(window, 'load', initialize);
