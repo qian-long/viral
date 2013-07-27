@@ -2,6 +2,13 @@
 @import "compass/css3";
 
 
+html{
+	background-image: url('../img/simple_dashed.png') !important;
+
+	.container{
+		height:100%;
+	}
+}
 #droptop{
 	position: absolute;
 	top:-110px;
@@ -14,7 +21,8 @@
 	@include box-shadow(rgba(0,0,0,.8) 0px 0px 10px );
 
 	h2{
-		margin-top:42px;
+		margin: 42px auto 0px;
+		width: 400px;
 		color:#efefef;
 		text-shadow:0px 1px 1px black, 0px 0px 5px rgba(0,0,0,.5), 0px 1px 10px black;
 		font-family: 'Lato';
@@ -29,4 +37,78 @@
 		margin-right: auto !important;
 		margin-top:25px;
 	}
+}
+
+.avgrund-popin.custom{
+	font-family:Lato;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 26px;
+	margin-top: 18px;
+
+	input#search{
+		width: 344px;
+		font-size: 25px;
+		margin-top: 30px;
+	}
+}
+
+/*Normal*/
+.my-button {
+	position: absolute;
+	z-index:99;
+	cursor:pointer;
+	bottom:20px;
+	left: 0px;
+
+	display: block;
+	width: 168px;
+	height: 35px;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+	font-family: 'Lato';
+	letter-spacing: 1px;
+	font-weight: 200;
+	font-size: 10pt;
+	float: left;
+	margin: 10px 20px;
+
+	background-color: #2D2D2D;
+	border: 1px solid #000000;
+	-moz-box-shadow:inset 0px 0px 1px rgba(0,0,0,1);
+	-webkit-box-shadow:inset 0px 0px 1px rgba(0,0,0,1);
+	box-shadow:inset 0px 0px 1px rgba(0,0,0,1);
+	background-image: -o-linear-gradient(90deg , rgb(53,53,53) 0%, rgb(67,67,67) 100%);
+	background-image: -moz-linear-gradient(90deg , rgb(53,53,53) 0%, rgb(67,67,67) 100%);
+	background-image: -webkit-linear-gradient(90deg , rgb(53,53,53) 0%, rgb(67,67,67) 100%);
+	background-image: -ms-linear-gradient(90deg , rgb(53,53,53) 0%, rgb(67,67,67) 100%);
+	background-image: linear-gradient(90deg , rgb(53,53,53) 0%, rgb(67,67,67) 100%);
+	color: #FDFFFD;
+	text-shadow: rgba(0,0,0,1) 0px 1px 0px;
+}
+
+/*Hover*/
+.my-button:hover {
+background-color: #4C4C4C;
+background-image: -o-linear-gradient(90deg , rgb(63,63,63) 0%, rgb(79,79,79) 100%);
+background-image: -moz-linear-gradient(90deg , rgb(63,63,63) 0%, rgb(79,79,79) 100%);
+background-image: -webkit-linear-gradient(90deg , rgb(63,63,63) 0%, rgb(79,79,79) 100%);
+background-image: -ms-linear-gradient(90deg , rgb(63,63,63) 0%, rgb(79,79,79) 100%);
+background-image: linear-gradient(90deg , rgb(63,63,63) 0%, rgb(79,79,79) 100%);
+}
+
+/*Active*/
+.my-button:active {
+	background-color: #272727;
+	-moz-box-shadow:inset 0px 0px 5px rgba(0,0,0,1);
+	-webkit-box-shadow:inset 0px 0px 5px rgba(0,0,0,1);
+	box-shadow:inset 0px 0px 5px rgba(0,0,0,1);
+	background-image: -o-linear-gradient(90deg , rgb(67,67,67) 0%, rgb(53,53,53) 100%);
+	background-image: -moz-linear-gradient(90deg , rgb(67,67,67) 0%, rgb(53,53,53) 100%);
+	background-image: -webkit-linear-gradient(90deg , rgb(67,67,67) 0%, rgb(53,53,53) 100%);
+	background-image: -ms-linear-gradient(90deg , rgb(67,67,67) 0%, rgb(53,53,53) 100%);
+	background-image: linear-gradient(90deg , rgb(67,67,67) 0%, rgb(53,53,53) 100%);
+	text-shadow: none;
 }

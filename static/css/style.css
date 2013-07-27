@@ -64,6 +64,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 5, ../sass/style.scss */
+html {
+  background-image: url("../img/simple_dashed.png") !important;
+}
+/* line 8, ../sass/style.scss */
+html .container {
+  height: 100%;
+}
+
+/* line 12, ../sass/style.scss */
 #droptop {
   position: absolute;
   top: -110px;
@@ -77,9 +86,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
   box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
 }
-/* line 16, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
 #droptop h2 {
-  margin-top: 42px;
+  margin: 42px auto 0px;
+  width: 400px;
   color: #efefef;
   text-shadow: 0px 1px 1px black, 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 1px 10px black;
   font-family: 'Lato';
@@ -87,7 +97,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 40px;
   text-align: center;
 }
-/* line 26, ../sass/style.scss */
+/* line 34, ../sass/style.scss */
 #droptop .slider-volume {
   width: 700px;
   margin-left: auto !important;
@@ -95,8 +105,78 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-top: 25px;
 }
 
-form {
+/* line 42, ../sass/style.scss */
+.avgrund-popin.custom {
+  font-family: Lato;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  margin-top: 18px;
+}
+/* line 49, ../sass/style.scss */
+.avgrund-popin.custom input#search {
+  width: 344px;
+  font-size: 25px;
+  margin-top: 30px;
+}
+
+/*Normal*/
+/* line 57, ../sass/style.scss */
+.my-button {
+  position: absolute;
+  z-index: 99;
+  cursor: pointer;
+  bottom: 20px;
+  left: 0px;
+  display: block;
+  width: 168px;
+  height: 35px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 35px;
+  text-decoration: none;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-size: 10pt;
   float: left;
-  z-index: 2;
-  padding-top: 55px;
+  margin: 10px 20px;
+  background-color: #2D2D2D;
+  border: 1px solid #000000;
+  -moz-box-shadow: inset 0px 0px 1px black;
+  -webkit-box-shadow: inset 0px 0px 1px black;
+  box-shadow: inset 0px 0px 1px black;
+  background-image: -o-linear-gradient(90deg, #353535 0%, #434343 100%);
+  background-image: -moz-linear-gradient(90deg, #353535 0%, #434343 100%);
+  background-image: -webkit-linear-gradient(90deg, #353535 0%, #434343 100%);
+  background-image: -ms-linear-gradient(90deg, #353535 0%, #434343 100%);
+  background-image: linear-gradient(90deg, #353535 0%, #434343 100%);
+  color: #FDFFFD;
+  text-shadow: black 0px 1px 0px;
+}
+
+/*Hover*/
+/* line 93, ../sass/style.scss */
+.my-button:hover {
+  background-color: #4C4C4C;
+  background-image: -o-linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
+  background-image: -moz-linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
+  background-image: -webkit-linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
+  background-image: -ms-linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
+  background-image: linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
+}
+
+/*Active*/
+/* line 103, ../sass/style.scss */
+.my-button:active {
+  background-color: #272727;
+  -moz-box-shadow: inset 0px 0px 5px black;
+  -webkit-box-shadow: inset 0px 0px 5px black;
+  box-shadow: inset 0px 0px 5px black;
+  background-image: -o-linear-gradient(90deg, #434343 0%, #353535 100%);
+  background-image: -moz-linear-gradient(90deg, #434343 0%, #353535 100%);
+  background-image: -webkit-linear-gradient(90deg, #434343 0%, #353535 100%);
+  background-image: -ms-linear-gradient(90deg, #434343 0%, #353535 100%);
+  background-image: linear-gradient(90deg, #434343 0%, #353535 100%);
+  text-shadow: none;
 }

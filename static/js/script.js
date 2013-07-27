@@ -17,13 +17,16 @@ var old_slider = 0;
 var new_data = cumulativeBucket(data);
 console.log("new_data is: ", new_data);
 
-go.onclick = function () {
+
+$("body").on("submit", "#form", function(e){
+    e.preventDefault();
+
     var text = $(document.getElementById("search")).val();
     if(text !== "galicia")
-        alert("Please type in 'galicia'");
+        alert("Event currently unmapped");
     else
         slidechange(2);
-}
+});
 
 for(var i = 0; i < data.length; i++) {
     taxiData.push(new google.maps.LatLng(data[i][0], data[i][1]));
@@ -175,7 +178,6 @@ function initialize() {
         var stupid = false;
         $(document.body).mousedown(function(){
             stupid = true;
-            console.log("SDFSDF");
         }).mouseup(function(){
             if(temp){
                 temp=false;
@@ -249,6 +251,16 @@ function changeRadius() {
 function changeOpacity() {
   heatmap.setOptions({opacity: heatmap.get('opacity') ? null : 0.2});
 }
+
+
+        $('.my-button').avgrund({
+            height: 200,
+            holderClass: 'custom',
+            showClose: true,
+            showCloseText: 'x',
+            onBlurContainer: '.container',
+            template: '<h4>Select a current event</h4><form id="form"><input id="search" type="search" placeholder="Search..." value=""></form>'
+        });
 
 
     google.maps.event.addDomListener(window, 'load', initialize);
