@@ -55,25 +55,23 @@ function initialize() {
         }, 1000, 'easeInOutBack');
 
         $('#droptop').hover(function(){
-            // $(this).stop().animate({
-            //     height: 120
-            // }, 200, 'easeInOutSine');
-
-            $(this).find('h2').stop().animate({
-                marginTop: '-13px'
-            }, 250);
+            slideUp();
 
         }, function(){
-            // $(this).stop().animate({
-            //     height: 100
-            // }, 200, 'easeInOutSine');
-            
-            $(this).find('h2').stop().animate({
-                marginTop: '42px'
-            }, 250);
+            slideDown();
         });
 
+        function slideUp(){
+            $('#droptop h2').stop().animate({
+                marginTop: '-13px'
+            }, 250);
+        }
 
+        function slideDown(){
+            $('#droptop h2').stop().animate({
+                marginTop: '42px'
+            }, 250);
+        }
 
         // Activate slider
         $("#my-input").simpleSlider();
