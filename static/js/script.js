@@ -12,13 +12,17 @@ var mapOptions = {
         };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+var slider;
+var old_slider = 0;
+var new_data = cumulativeBucket(data);
+console.log("new_data is: ", new_data);
 
 go.onclick = function () {
     var text = $(document.getElementById("search")).val();
     if(text !== "galicia")
         alert("Please type in 'galicia'");
     else
-        heatMap();
+        slidechange(2);
 }
 
 for(var i = 0; i < data.length; i++) {
@@ -28,7 +32,7 @@ for(var i = 0; i < data.length; i++) {
 console.log("cumulative buckets, ", cumulativeBucket(data));
 console.log(taxiData);
 
-function heatMap() {
+function heatMap(arr) {
     var mapOptions = {
           center: new google.maps.LatLng(40, 0),
           zoom: 4,
@@ -48,13 +52,24 @@ function heatMap() {
         //   icon: '../static/img/dots/reddot.png'
         // });
 
-        pointArray = new google.maps.MVCArray(taxiData);
+        pointArray = new google.maps.MVCArray(arr);
 
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: pointArray
         });
 
         heatmap.setMap(map);
+}
+
+function slidechange(slider_num) {
+    if(slider_num == 0 || slider_num == 1)
+        return;
+    else {
+        console.log("new data: ", new_data[slider_num/2]);
+        console.log("slider_num: ", slider_num);
+        console.log("length of bucket: ", new_data[Math.round(slider_num/2) - 1].length)
+        heatMap(new_data[Math.round(slider_num/2) - 1]);
+    }
 }
 
 function cumulativeBucket(data) {
@@ -68,22 +83,23 @@ function cumulativeBucket(data) {
       mintime = data[i][2]
     }
   }
-  // divide into 10 buckets
-  var interval = (maxtime - mintime) / 10.0;
+  // divide into 5 buckets
+  var interval = (maxtime - mintime) / 5;
   var buckets = [];
   // initialize buckets
-  for (var i = 0; i < 10 ; i++) {
+  for (var i = 0; i < 5 ; i++) {
     buckets[i] = new Array();
   } 
 
   for (var i = 0; i < data.length; i++) {
     bucket = Math.round((data[i][2] - mintime) / interval) - 1;
     bucket = bucket < 0 ? 0 : bucket;
-    
-    buckets[bucket].push(data[i]);
+
+    var obj = new google.maps.LatLng(data[i][0], data[i][1]);
+    buckets[bucket].push(obj);
     // push data to all upper buckets
-    for (var j = bucket + 1; j < 10; j++) {
-      buckets[j].push(data[i]);
+    for (var j = bucket + 1; j < 5; j++) {
+      buckets[j].push(obj);
     }
   }
   return buckets;
@@ -187,9 +203,15 @@ function initialize() {
             // The currently selected value of the slider
             // console.log(data.value);
             stupid = true;
-
             // The value as a ratio of the slider (between 0 and 1)
             console.log(parseInt(data.ratio* 10));
+            slider = Math.round(data.ratio * 10);
+
+            if(old_slider !== slider)
+            {
+                slidechange(slider);
+            }
+            old_slider = Math.round(data.ratio * 10);
         });
       }
 
