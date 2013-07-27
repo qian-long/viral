@@ -1,9 +1,9 @@
 import tweepy
 import json
 import calendar
-auth = tweepy.OAuthHandler("fmOVYZLqm0uSBkCS1tLCQ", "G94sqrzpCgcy7ZUEZxv5j8IMjgKG3gpVCpI4PqdH8")
+auth = tweepy.OAuthHandler("OM6f3yrORlEKFbmYbgijw", "4Ts6z62LVwgs6NSmW2NufGf1urQxJhQhlJitOg05M")
 
-auth.set_access_token("1467714804-Xjbb3fuTT6abBj6QIQasyVnJSJo7XXvkI6Rz9Yr", "c2lD0qQZQku99fdBDpRmVGyn0NVEVVkNq4tSNLvI59s")
+auth.set_access_token("1467714804-v7pH4W2uKvHEyVE64o36gqvRiGrYHxnYS9CByxg", "S3UOdC4iwEAaLT3Te5IeghGCS9D5l11N01HnmOXwN0")
 api = tweepy.API(auth)
 
 #tweets = api.search('', count=1000)
@@ -17,30 +17,28 @@ while counter < 31:
         dict = {}
         counter = counter + 1
 #       print str(counter) + tweet.text + str(tweet.created_at)
-        #dict["lat"] = None
-        #dict["long"] = None
-        #dict["loc"] = None
+        dict["lat"] = None
+        dict["long"] = None
+        dict["loc"] = None
         if tweet.coordinates is not None:
             dict["lat"] = tweet.coordinates['coordinates'][1]
             dict["long"] = tweet.coordinates['coordinates'][0]
         elif tweet.geo is not None:
             dict["lat"] = tweet.geo['coordinates'][0]
             dict["long"] = tweet.geo['coordinates'][1]
-'''
         else:
             dict["lat"] = None
             dict["long"] = None
             if tweet.user.location is not None:
                 dict["loc"] = tweet.user.location                
-'''
         dict["ID"] = tweet.id
         dict["text"] = tweet.text
         timestamp = calendar.timegm(tweet.created_at.utctimetuple())
         dict["time"] = timestamp
         output.append(dict)
     current_id = tweets.since_id
-
-print output
+    answer = json.dumps(output)
+print answer
 print "//" + str(current_id)
 
 '''

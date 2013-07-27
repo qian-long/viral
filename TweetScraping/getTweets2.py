@@ -1,9 +1,9 @@
 import tweepy
 import json
 import calendar
-auth = tweepy.OAuthHandler("OM6f3yrORlEKFbmYbgijw", "4Ts6z62LVwgs6NSmW2NufGf1urQxJhQhlJitOg05M")
+auth = tweepy.OAuthHandler("t1JGNM84dllz91Jk8BhkQ", "Mut0O8YZGmUh1XyjL890NHUAGhngEOtNNyhFn9dzus")
 
-auth.set_access_token("1467714804-v7pH4W2uKvHEyVE64o36gqvRiGrYHxnYS9CByxg", "S3UOdC4iwEAaLT3Te5IeghGCS9D5l11N01HnmOXwN0")
+auth.set_access_token("1467714804-R7au6WYyiyUn6yIBZuOa8Ld1hVVUwfpe7hVLhHy", "gDBEcZVmmpMlIKDhPVOo7T0r1N01qyCzujnb6BypGQ")
 api = tweepy.API(auth)
 
 #tweets = api.search('', count=1000)
@@ -35,7 +35,8 @@ while counter < 10000:
             output.append(dict)
     current_id = tweets.since_id
 
-print output
+answer = json.dumps(output)
+print answer
 print "//" + str(current_id)
 
 '''
