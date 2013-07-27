@@ -94,3 +94,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: auto !important;
   margin-top: 25px;
 }
+
+form {
+  float: left;
+  z-index: 2;
+  padding-top: 55px;
+}
