@@ -11,8 +11,8 @@ $settings = array(
 );
 
 
-$url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = '?q=%23freebandnames&result_type=recent&count=100';
+$url = 'https://api.twitter.com/1.1/statuses/show.json';
+$getfield = '?id=360085838522089474';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 echo $twitter->setGetfield($getfield)

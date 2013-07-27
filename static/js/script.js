@@ -54,29 +54,54 @@ function initialize() {
             top: -30
         }, 1000, 'easeInOutBack');
 
+        var overDrop = false;
+        var temp = false;
         $('#droptop').hover(function(){
-            // $(this).stop().animate({
-            //     height: 120
-            // }, 200, 'easeInOutSine');
+            overDrop = true;
+            slideUp();
+        }, function(){
+            overDrop = false;
+            if(!stupid)
+                slideDown();
+            else
+                temp = true;
+        });
 
-            $(this).find('h2').stop().animate({
+        var stupid = false;
+        $(document.body).mousedown(function(){
+            stupid = true;
+            console.log("SDFSDF");
+        }).mouseup(function(){
+            if(temp){
+                temp=false;
+                slideDown();
+            }
+            stupid = false;
+        });
+
+        function slideUp(){
+            $('#droptop h2').stop().animate({
                 marginTop: '-13px'
             }, 250);
+        };
 
-        }, function(){
-            // $(this).stop().animate({
-            //     height: 100
-            // }, 200, 'easeInOutSine');
-            
-            $(this).find('h2').stop().animate({
+        function slideDown(){
+            $('#droptop h2').stop().animate({
                 marginTop: '42px'
             }, 250);
-        });
+        };
 
 
 
         // Activate slider
-        $("#my-input").simpleSlider();
+        $("#my-input").bind("slider:changed", function (event, data) {
+            // The currently selected value of the slider
+            console.log(data.value);
+            stupid = true;
+
+            // The value as a ratio of the slider (between 0 and 1)
+            console.log(data.ratio);
+        });
 
       }
 
