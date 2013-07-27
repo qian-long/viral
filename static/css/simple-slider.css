@@ -1,0 +1,51 @@
+/* line 1, ../sass/simple-slider.scss */
+.slider {
+  width: 300px;
+}
+
+/* line 5, ../sass/simple-slider.scss */
+.slider > .dragger {
+  background: #8DCA09;
+  background: -webkit-linear-gradient(top, #8dca09, #72a307);
+  background: -moz-linear-gradient(top, #8dca09, #72a307);
+  background: linear-gradient(top, #8dca09, #72a307);
+  -webkit-box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #496805;
+  width: 16px;
+  height: 16px;
+}
+
+/* line 24, ../sass/simple-slider.scss */
+.slider > .dragger:hover {
+  background: -webkit-linear-gradient(top, #8dca09, #8dca09);
+}
+
+/* line 29, ../sass/simple-slider.scss */
+.slider > .track, .slider > .highlight-track {
+  background: #ccc;
+  background: -webkit-linear-gradient(top, #bbbbbb, #dddddd);
+  background: -moz-linear-gradient(top, #bbbbbb, #dddddd);
+  background: linear-gradient(top, #bbbbbb, #dddddd);
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  height: 4px;
+}
+
+/* line 47, ../sass/simple-slider.scss */
+.slider > .highlight-track {
+  background-color: #8DCA09;
+  background: -webkit-linear-gradient(top, #8dca09, #72a307);
+  background: -moz-linear-gradient(top, #8dca09, #72a307);
+  background: linear-gradient(top, #8dca09, #72a307);
+  border-color: #496805;
+}

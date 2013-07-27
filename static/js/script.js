@@ -2,7 +2,7 @@ function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeId: google.maps.MapTypeId.TERRAIN,
           panControl: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -47,20 +47,36 @@ function initialize() {
 
         var ib = new InfoBox(myOptions);
 
+
+
+        // Animation of topbar
         $('#droptop').animate({
             top: -30
         }, 1000, 'easeInOutBack');
 
         $('#droptop').hover(function(){
-            $(this).stop().animate({
-                height: 120
-            }, 200, 'easeInOutSine');
+            // $(this).stop().animate({
+            //     height: 120
+            // }, 200, 'easeInOutSine');
+
+            $(this).find('h2').stop().animate({
+                marginTop: '-13px'
+            }, 250);
 
         }, function(){
-            $(this).stop().animate({
-                height: 100
-            }, 200, 'easeInOutSine');
+            // $(this).stop().animate({
+            //     height: 100
+            // }, 200, 'easeInOutSine');
+            
+            $(this).find('h2').stop().animate({
+                marginTop: '42px'
+            }, 250);
         });
+
+
+
+        // Activate slider
+        $("#my-input").simpleSlider();
 
       }
 
