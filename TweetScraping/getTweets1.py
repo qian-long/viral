@@ -18,7 +18,9 @@ print tweets.max_id
 """
 output = []
 for tweet in tweets:
-  output.append((tweet.id, tweet.created_at, tweet.coordinates, tweet.geo, tweet.geo[1], tweet.text, tweet.user.location, tweet.user.time_zone, tweet.user.utc_offset))
+  if tweet.coordinates != None:
+    output.append((tweet.coordinates['coordinates'][1], tweet.coordinates['coordinates'][0]))
+  #output.append((tweet.id, tweet.created_at, tweet.coordinates, tweet.geo, tweet.geo[1], tweet.text, tweet.user.location, tweet.user.time_zone, tweet.user.utc_offset))
 
 print output
 # pipe this to output file
