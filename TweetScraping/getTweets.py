@@ -1,16 +1,16 @@
 import tweepy
 import json
 import calendar
-auth = tweepy.OAuthHandler("oLiGSoQwJOvtzFtlyNnnw", "mqnfZctUbcLZFE4TsNNTUoYTvnroFm1kX4fovMTifA")
+auth = tweepy.OAuthHandler("jmOeCnnbDXgFv3kcHUImQ", "LJLSxZrAV4ZoZK1CJgi8wi1l9O8fNEkcs7EqqsVpE")
 
-auth.set_access_token("45437141-mYP4NzhcJ9FoUshA5uDmmoOZPPJSRHEHXRQaWFSO8", "k8tL4BG10XgNNcdJ5cATR82lUGCidMG0PIoVN6bcWw")
+auth.set_access_token("45437141-zDplAY0sgKx8AbdgEyeKdY7Z1UDyEyZsdd87x5Edc", "nLYzb5JtNYZMr9h3kpJ0Y2UIgU78Qw4SRAPxMVlvo")
 api = tweepy.API(auth)
 
 #tweets = api.search('', count=1000)
 counter = 0
 output = []
 #print len(tweets)
-current_id = 360432912337870848
+current_id = 360405463675834369
 # make 10 apps, run script 10 times
 # change current_id!!!!!
 iteration = 0
