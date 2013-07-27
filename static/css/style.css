@@ -107,23 +107,42 @@ html .container {
 
 /* line 42, ../sass/style.scss */
 .avgrund-popin.custom {
-  font-family: Lato;
+  font-family: 'Lato';
   margin: 0 auto;
   text-align: center;
   font-size: 26px;
   margin-top: 18px;
 }
 /* line 49, ../sass/style.scss */
+.avgrund-popin.custom h4 {
+  margin-top: 40px;
+}
+/* line 53, ../sass/style.scss */
+.avgrund-popin.custom form {
+  margin-top: 30px;
+}
+/* line 56, ../sass/style.scss */
 .avgrund-popin.custom input#search {
   width: 344px;
-  font-size: 25px;
+  font-size: 20px;
+  font-family: 'Lato';
+  font-weight: 200;
   margin-top: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid black;
+  padding: 10px 5px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0;
 }
 
 /*Normal*/
-/* line 57, ../sass/style.scss */
+/* line 73, ../sass/style.scss */
 .my-button {
-  position: absolute;
+  position: fixed;
   z-index: 99;
   cursor: pointer;
   bottom: 20px;
@@ -156,7 +175,7 @@ html .container {
 }
 
 /*Hover*/
-/* line 93, ../sass/style.scss */
+/* line 109, ../sass/style.scss */
 .my-button:hover {
   background-color: #4C4C4C;
   background-image: -o-linear-gradient(90deg, #3f3f3f 0%, #4f4f4f 100%);
@@ -167,7 +186,7 @@ html .container {
 }
 
 /*Active*/
-/* line 103, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 .my-button:active {
   background-color: #272727;
   -moz-box-shadow: inset 0px 0px 5px black;

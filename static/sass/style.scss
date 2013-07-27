@@ -40,22 +40,38 @@ html{
 }
 
 .avgrund-popin.custom{
-	font-family:Lato;
+	font-family:'Lato';
 	margin: 0 auto;
 	text-align: center;
 	font-size: 26px;
 	margin-top: 18px;
 
+	h4{
+		margin-top:40px;
+	}
+
+	form{
+		margin-top:30px;
+	}
 	input#search{
 		width: 344px;
-		font-size: 25px;
+		font-size: 20px;
+		font-family:'Lato';
+		font-weight: 200;
 		margin-top: 30px;
+
+		@include border-radius(3px);
+
+		border: 1px solid black;
+		padding: 10px 5px;
+		background: rgba(255,255,255,0.5);
+		margin: 0 0 10px 0; 
 	}
 }
 
 /*Normal*/
 .my-button {
-	position: absolute;
+	position: fixed;
 	z-index:99;
 	cursor:pointer;
 	bottom:20px;

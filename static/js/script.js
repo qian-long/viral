@@ -15,6 +15,13 @@ var mapOptions = {
 var slider;
 var old_slider = 0;
 var new_data = cumulativeBucket(data);
+var total_data = [];
+
+for(var x = 0; x < new_data.length; x ++){
+    for(var y = 0; y < new_data[x].length; y++){
+        total_data.push(new_data[x][y]);
+    }
+}
 console.log("new_data is: ", new_data);
 
 
@@ -45,8 +52,6 @@ function heatMap(arr) {
           mapTypeControl: false,
           zoomControl: false
         };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
 
         // var marker = new google.maps.Marker({
         //   position: new google.maps.LatLng(0,0),
@@ -68,10 +73,19 @@ function slidechange(slider_num) {
     if(slider_num == 0 || slider_num == 1)
         return;
     else {
-        console.log("new data: ", new_data[slider_num/2]);
-        console.log("slider_num: ", slider_num);
-        console.log("length of bucket: ", new_data[Math.round(slider_num/2) - 1].length)
-        heatMap(new_data[Math.round(slider_num/2) - 1]);
+
+        // console.log("new data: ", new_data[Math.round(slider_num/2) - 1]);
+        // console.log("slider_num: ", slider_num);
+        // console.log("length of bucket: ", new_data[Math.round(slider_num/2) - 1].length);
+
+        var temp = [];
+        var tempNum = Math.round(total_data.length * slider_num/10);
+        for(var x = 0; x < tempNum; x ++){
+            temp.push(total_data[x]);
+        }
+        //heatMap(new_data[Math.round(slider_num/2) - 1]);
+        console.log( temp.length );
+        heatMap( temp );
     }
 }
 
@@ -206,7 +220,7 @@ function initialize() {
             // console.log(data.value);
             stupid = true;
             // The value as a ratio of the slider (between 0 and 1)
-            console.log(parseInt(data.ratio* 10));
+            
             slider = Math.round(data.ratio * 10);
 
             if(old_slider !== slider)
