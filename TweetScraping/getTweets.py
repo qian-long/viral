@@ -17,22 +17,22 @@ while counter < 31:
         dict = {}
         counter = counter + 1
 #       print str(counter) + tweet.text + str(tweet.created_at)
-        dict["lat"] = None
-        dict["long"] = None
-        dict["loc"] = None
+        #dict["lat"] = None
+        #dict["long"] = None
+        #dict["loc"] = None
         if tweet.coordinates is not None:
             dict["lat"] = tweet.coordinates['coordinates'][1]
             dict["long"] = tweet.coordinates['coordinates'][0]
         elif tweet.geo is not None:
             dict["lat"] = tweet.geo['coordinates'][0]
             dict["long"] = tweet.geo['coordinates'][1]
-
+'''
         else:
             dict["lat"] = None
             dict["long"] = None
             if tweet.user.location is not None:
                 dict["loc"] = tweet.user.location                
-
+'''
         dict["ID"] = tweet.id
         dict["text"] = tweet.text
         timestamp = calendar.timegm(tweet.created_at.utctimetuple())
