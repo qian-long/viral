@@ -28,17 +28,17 @@ for(var i = 0; i < data.length; i++) {
 console.log(taxiData);
 
 function heatMap() {
-    // var mapOptions = {
-    //       center: new google.maps.LatLng(40, 0),
-    //       zoom: 3,
-    //       mapTypeId: google.maps.MapTypeId.ROADMAP,
-    //       panControl: false,
-    //       streetViewControl: false,
-    //       mapTypeControl: false,
-    //       zoomControl: false
-    //     };
-    //     map = new google.maps.Map(document.getElementById("map-canvas"),
-    //         mapOptions);
+    var mapOptions = {
+          center: new google.maps.LatLng(40, 0),
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          panControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          zoomControl: false
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
 
         // var marker = new google.maps.Marker({
         //   position: new google.maps.LatLng(0,0),
