@@ -8,6 +8,7 @@ def removeNonAscii(string):
 def get_coords(location_str):
   try:
     clean_location = urllib.quote_plus(removeNonAscii(location_str))
+    sys.stderr.write(clean_location)
     url = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" % (clean_location)
     #print "location_str", location_str
     #print urllib.quote(location_str)
@@ -32,19 +33,23 @@ def process_data(array):
   nocoord_count_pre = 0
   nocoord_count_post = 0
   coords = []
-  for tweet in array:
+  for i in xrange(len(array)):
+    if i % 500 == 0:
+      sys.stderr.write("at: " + str(i) + "\n")
+    tweet = array[i]
     location = tweet[u'loc']
     if tweet[u'lat'] == None:
       nocoord_count_pre += 1
-      coords_tup = get_coords(location)
-      coords.append((location, coords_tup))
-      if coords_tup != None:
-        tweet[u'lat'] = coords_tup[0]
-        tweet[u'long'] = coords_tup[1]
-      else:
-        nocoord_count_post += 1
-  print "pre no coord count", nocoord_count_pre
-  print "post no coord count", nocoord_count_post
+      #coords_tup = get_coords(location)
+      #coords.append((location, coords_tup))
+      #if coords_tup != None:
+      #  tweet[u'lat'] = coords_tup[0]
+      #  tweet[u'long'] = coords_tup[1]
+      #else:
+      #  nocoord_count_post += 1
+  print "//pre no coord count", nocoord_count_pre
+  #print "//post no coord count", nocoord_count_post
+  print "//total", len(array)
   return array
     
 if __name__ == "__main__":
@@ -52,4 +57,4 @@ if __name__ == "__main__":
   f = open(filename, 'r')
   data = json.load(f)
   result = process_data(data)
-  print result
+  #print result

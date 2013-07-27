@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load staticfiles %}
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/simple-slider.css" />
-    <link rel="stylesheet" type="text/css" href="../static/css/simple-slider-volume.css" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" type="text/css" href="/static/css/simple-slider.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/simple-slider-volume.css" />
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <style type="text/css">
         html { height: 100% }
@@ -26,7 +27,7 @@
     <div id="map-canvas"/>
 
 
-    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
 
   </body>
 </html>
