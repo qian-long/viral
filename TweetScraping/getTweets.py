@@ -1,16 +1,18 @@
 import tweepy
 
-auth = tweepy.OAuthHandler("key", "key2")
+auth = tweepy.OAuthHandler("Dymgnrgon9xzUPiVaLdysw", "NbvrqBFFW9LVAqZ5Jd305EJOB2dNV2JAckYBu3EqB3o")
 
-auth.set_access_token("key", "key2")
+auth.set_access_token("1467714804-03r0XdOXrq2Xi3OCTiLi4ztjaPzPkYSpq18LlBB", "hmWr6tshZ3TpGt9uEYCX8Wa32TfHSL25onegjjvHg")
 api = tweepy.API(auth)
 
-tweets = api.search('asiana')
-
+tweets = api.search('asiana', count=1000)
+counter = 0
+print len(tweets)
 for tweet in tweets:
-    print tweet.text
+    counter = counter + 1
+    print str(counter) + tweet.text + tweet.id
 
-
+'''
 print api.me().name
 statuses = api.user_timeline()
 for status in statuses:
@@ -24,5 +26,5 @@ myFriends = api.followers_ids('harinidkannan')
 for friend in myFriends:
     print "Hellow, my ID is " + str(friend)
     print api.get_user(friend).screen_name
-
+'''
 
