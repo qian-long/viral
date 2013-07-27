@@ -11,7 +11,9 @@ counter = 0
 output = []
 #print len(tweets)
 current_id = 360973835627020288
-while counter < 31:
+# make 10 apps, run script 10 times
+# change current_id!!!!!
+while counter < 10000:
     tweets = api.search('royal baby', count=15, result_type='recent', max_id = current_id)
     for tweet in tweets:
         dict = {}
